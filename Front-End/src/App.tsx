@@ -1,4 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AboutUS from "./components/About&Contact/AboutUS";
+import ContactUs from "./components/About&Contact/ContactUs";
 import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
 import Reservations from "./pages/Reservations/Reservations";
@@ -40,6 +42,13 @@ const router = createBrowserRouter([
   {
     path: "/addTicket",
     element: <AddTicket />,
+  },
+  {
+    path: "/about",
+    element: <AboutUS />,
+  },{
+    path: "/contact",
+    element: <ContactUs />,
   },
 ]);
 function App() {

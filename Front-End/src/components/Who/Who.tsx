@@ -10,13 +10,13 @@ import {
   Icon,
   useColorModeValue,
 } from "@chakra-ui/react";
+import image from '../../assets/19362653-.png'
 import {
   IoAnalyticsSharp,
   IoLogoBitcoin,
   IoSearchSharp,
 } from "react-icons/io5";
 import { ReactElement } from "react";
-
 interface FeatureProps {
   text: string;
   iconBg: string;
@@ -97,7 +97,7 @@ export default function Who() {
             rounded={"md"}
             alt={"feature image"}
             src={
-              "https://o.remove.bg/downloads/3a853dbc-87b6-4cc4-b974-6655c1c540cc/10798281_19362653-removebg-preview.png"
+              image
             }
             objectFit={"cover"}
           />

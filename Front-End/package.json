@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mui/icons-material": "^5.11.11",
     "@chakra-ui/icons": "^2.0.17",
     "@chakra-ui/react": "^2.5.1",
     "@emotion/react": "^11.10.6",
@@ -28,7 +29,7 @@
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.9.0",
     "react-toastify": "^9.1.1",
-    "sweetalert2": "^11.7.3",
+    "sweetalert2": "^11.4.8",
     "swr": "^2.1.0",
     "universal-cookie": "^4.0.4",
     "zxcvbn": "^4.4.2"
