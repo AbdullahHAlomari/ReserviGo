@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model reservation {
+  id           String         @id @default(uuid())
+  userId       String
+  ticketId     String
+  reservedAt   DateTime       @default(now())
+  ticket       ticket         @relation(fields: [ticketId], references: [id], map: "Reservation_ticketId_fkey")
+  user         user           @relation(fields: [userId], references: [id], map: "Reservation_userId_fkey")
+  selecteduser selecteduser[]
+
+  @@index([ticketId], map: "Reservation_ticketId_fkey")
+  @@index([userId], map: "Reservation_userId_fkey")
+}
+
+model ticket {
+  id           String         @id @default(uuid())
+  image        String
+  event        String
+  availableQty Int
+  location     String
+  description  String
+  price        Float
+  endDate      DateTime
+  reservations reservation[]
+  selecteduser selecteduser[]
+}
+
+model user {
+  id           String         @id @default(uuid())
+  email        String         @unique(map: "User_email_key")
+  firstname    String
+  lastname     String
+  password     String
+  Role         String
+  reservations reservation[]
+  selecteduser selecteduser[]
+}
+
+model selecteduser {
+  id             String      @id
+  reservationId  String
+  userId         String
+  ticketId       String
+  sentAt         DateTime    @default(now())
+  expirationTime DateTime
+  isPurchased    Boolean     @default(false)
+  reservation    reservation @relation(fields: [reservationId], references: [id], map: "SelectedUser_reservationId_fkey")
+  ticket         ticket      @relation(fields: [ticketId], references: [id], map: "SelectedUser_ticketId_fkey")
+  user           user        @relation(fields: [userId], references: [id], map: "SelectedUser_userId_fkey")
+
+  @@index([reservationId], map: "SelectedUser_reservationId_fkey")
+  @@index([ticketId], map: "SelectedUser_ticketId_fkey")
+  @@index([userId], map: "SelectedUser_userId_fkey")
+}
